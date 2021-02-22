@@ -1,0 +1,21 @@
+body {
+    font-family: Impact;
+    font-weight: 900;
+    background-color: powderblue;
+    font-size: 46px;
+    font-style: normal;
+    color: lightseagreen;
+    text-align: center;
+}
+
+
+h1 {
+    font-size: 80px;
+    color: blueviolet;
+}
+
+
+div.main_calc_input {
+    font-size: 30px;
+    
+}
