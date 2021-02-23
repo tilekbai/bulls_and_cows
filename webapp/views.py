@@ -37,17 +37,12 @@ def index_view(request):
         for key in numbers_dict:
             player_nums.append(int(numbers_dict[key]))
 
-        print("===== SECRET NUMS =====: ", str(secret_nums))
-        print(">>>>> PLAYER NUMS >>>>>: ", str(player_nums))
-
         if player_nums == secret_nums:
             for el in player_nums:
                 bulls.append(el)
                 result_dict['bulls'] = len(bulls)
             result_dict['cows'] = len(cows)
             all_result_list.append(result_dict)
-            print("\nRESULT_DICT = ", str(result_dict))
-            print("***** All RESULT LIST *****: ", str(all_result_list))
             secret_nums.clear()
             all_result_list.clear()
             return render(request, 'win.html', numbers_dict) 
@@ -72,8 +67,6 @@ def index_view(request):
             result_dict['bulls'] = len(bulls)
             result_dict['cows'] = len(cows)
             all_result_list.append(result_dict)
-            print("\nRESULT_DICT = ", str(result_dict))
-            print("***** All RESULT LIST *****: ", str(all_result_list))
             return render(request, 'result_history.html', numbers_dict)
             
 
@@ -82,5 +75,4 @@ def index_view(request):
 
 def result_page_view(request): 
     result_page_dict = {i: d for i, d in enumerate(all_result_list, 1)}
-    print("RESULT_PAGE_DICT: " + str(result_page_dict))
     return render(request, 'result_page.html', {'result_page_dict': result_page_dict})
