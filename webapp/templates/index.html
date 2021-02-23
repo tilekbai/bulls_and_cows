@@ -10,12 +10,13 @@
     <link rel = stylesheet href = "{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class="main_calc_input">
+    <header><a href="/result">Resutl Page</a></header>
+    <div class="main_input">
         <h1>Bulls and Cows<h2>
         <form action="/" method="POST">
             {% csrf_token %}
-            <label>Guess 4 numbers. Enter them separated with spaces:</label><br/>
-            <input type="text" name="numbers"/><br/> 
+            <label>Enter numbers:</label><br/>
+            <input type="number" name="first_number"/><input type="number" name="second_number"/><input type="number" name="third_number"/><input type="number" name="fourth_number"/><br/> 
             
             <input type="submit" value="Send"/>
         </form>

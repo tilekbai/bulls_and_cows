@@ -1,21 +1,21 @@
 body {
-    font-family: Impact;
+    font-family: monospace;
     font-weight: 900;
-    background-color: powderblue;
-    font-size: 46px;
+    background-color: rgb(15, 194, 218);
+    font-size: 36px;
     font-style: normal;
-    color: lightseagreen;
+    color: rgb(18, 218, 78);
     text-align: center;
 }
 
-
+header {
+    font-family: inherit;
+    font-size: 20px;
+    color: lime;
+}
 h1 {
+    font-family: monospace;
     font-size: 80px;
     color: blueviolet;
 }
 
-
-div.main_calc_input {
-    font-size: 30px;
-    
-}
