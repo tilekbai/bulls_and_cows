@@ -54,8 +54,7 @@ def index_view(request):
         
         
         if [k for k,v in Counter(player_nums).items() if v>1]:
-            print("*********************************************************")
-            return render(request, 'win.html', numbers_dict) 
+            return render(request, 'error.html', numbers_dict) 
         else:
             for el in player_nums:
                 try:
