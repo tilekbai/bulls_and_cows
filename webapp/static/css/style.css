@@ -1,21 +1,33 @@
 body {
-    font-family: monospace;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: 900;
     background-color: rgb(15, 194, 218);
-    font-size: 36px;
+    font-size: 20px;
     font-style: normal;
     color: rgb(18, 218, 78);
     text-align: center;
 }
 
-header {
+header a {
     font-family: inherit;
     font-size: 20px;
     color: lime;
 }
+
 h1 {
     font-family: monospace;
-    font-size: 80px;
+    font-size: 50px;
+    font-weight: 900;
     color: blueviolet;
+}
+
+.main_input label {
+    font-style: normal;
+    color:rgb(240, 91, 4)
+}
+
+.steps_history p {
+    font-size: 30px;
+    color: rgb(4, 8, 240);
 }
 

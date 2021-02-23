@@ -4,10 +4,13 @@ from random import randint
 # Create your views here.
 
 from django.shortcuts import render
+from collections import Counter
 
-secret_nums = []  
+secret_nums = []
+all_result_list = []
+
 def index_view(request):
-
+    result_dict = {}
 
     while len(secret_nums) != 4:
         rand = (randint(1, 10))
@@ -33,24 +36,52 @@ def index_view(request):
 
         for key in numbers_dict:
             player_nums.append(int(numbers_dict[key]))
+
         print("===== SECRET NUMS =====: ", str(secret_nums))
         print(">>>>> PLAYER NUMS >>>>>: ", str(player_nums))
 
         if player_nums == secret_nums:
+            for el in player_nums:
+                bulls.append(el)
+                result_dict['bulls'] = len(bulls)
+            result_dict['cows'] = len(cows)
+            all_result_list.append(result_dict)
+            print("\nRESULT_DICT = ", str(result_dict))
+            print("***** All RESULT LIST *****: ", str(all_result_list))
+            secret_nums.clear()
+            all_result_list.clear()
             return render(request, 'win.html', numbers_dict) 
         
+        
+        if [k for k,v in Counter(player_nums).items() if v>1]:
+            print("*********************************************************")
+            return render(request, 'win.html', numbers_dict) 
+        else:
+            for el in player_nums:
+                try:
+                    if player_nums.index(el) == secret_nums.index(el):
+                        bulls.append(el)
+                        numbers_dict['bulls'] = len(bulls)
 
-        for el in player_nums:
-            try:
-                if player_nums.index(el) == secret_nums.index(el):
-                    bulls.append(el)
-                    numbers_dict['bulls'] = len(bulls)
+                    else:
+                        cows.append(el)
+                        numbers_dict['cows'] = len(cows)
 
-                else:
-                    cows.append(el)
-                    numbers_dict['cows'] = len(cows)
+                except ValueError:
+                    pass
+        
+            result_dict['bulls'] = len(bulls)
+            result_dict['cows'] = len(cows)
+            all_result_list.append(result_dict)
+            print("\nRESULT_DICT = ", str(result_dict))
+            print("***** All RESULT LIST *****: ", str(all_result_list))
+            return render(request, 'result_history.html', numbers_dict)
+            
 
-            except ValueError:
-                pass
+        
 
-        return render(request, 'result_history.html', numbers_dict)
+
+def result_page_view(request): 
+    result_page_dict = {i: d for i, d in enumerate(all_result_list, 1)}
+    print("RESULT_PAGE_DICT: " + str(result_page_dict))
+    return render(request, 'result_page.html', {'result_page_dict': result_page_dict})

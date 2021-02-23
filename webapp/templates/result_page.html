@@ -10,14 +10,12 @@
     <link rel = stylesheet href = "{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class="main_input">
+    <header><a href="/">Back to game</a></header>
+    <div class="steps_history">
         <h1>Bulls and Cows<h1>
-        <p>Bulls: 4</p>
-        <h1>You got it right!<h1>
-        <form action="/" method="GET">
-            {% csrf_token %}
-            <input type="submit" value="Play again"/>
-        </form>
+        {% for key, j in result_page_dict.items %}
+        <p>Step: {{ key }}. Cows: {{ j.cows }}, Bulls: {{ j.bulls }}</p>
+        {% endfor %}
     </div>
 </body> 
 </html>
